@@ -1,0 +1,23 @@
+{
+  "name": "practicejs",
+  "version": "1.0.0",
+  "description": "JS Practice",
+  "main": "index.js",
+  "dependencies": { },
+  "devDependencies": {
+    "jasmine": "^2.3.1"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kezakez/practicejs.git"
+  },
+  "author": "keza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kezakez/practicejs/issues"
+  },
+  "homepage": "https://github.com/kezakez/practicejs"
+}
