@@ -13,109 +13,41 @@ function hasZeroSumNumber(input) {
     return false;
 }
 
-    function findNumbersWithSum(data, sum, excludeIndex)
-    {
-        var found = false;
-        var ahead = data.length - 1;
-        var behind = 0;
+function findNumbersWithSum(data, sum, excludeIndex) {
+    var found = false;
+    var ahead = data.length - 1;
+    var behind = 0;
 
-        while(ahead > behind)
-        {
-            if(ahead == excludeIndex)
-                ahead--;
-            if(behind == excludeIndex)
-                behind++;
+    while (ahead > behind) {
+        if (ahead == excludeIndex)
+            ahead--;
+        if (behind == excludeIndex)
+            behind++;
 
-            var curSum = data[ahead] + data[behind];
+        var curSum = data[ahead] + data[behind];
 
-            if(curSum == sum)
-            {
-                found = true;
-                break;
-            }
-            else if(curSum > sum)
-                ahead--;
-            else
-                behind++;
+        if (floatEquality(curSum, sum)) {
+            found = true;
+            break;
         }
-
-        return found;
+        else if (curSum > sum)
+            ahead--;
+        else
+            behind++;
     }
 
+    return found;
+}
 
-(function shouldBeFalseWhenNot() {
-    // arrange
-    var arrayTest = [0, 3, 1, 2];
+var epsilon = 0.000000000000001; //ES6: Number.EPSILON
 
-    // act
-    var result = hasZeroSumNumber(arrayTest);
+function floatEquality(num1, num2) {
+    if (num1 === num2) return true;
 
-    // assert
-    console.assert(!result, 'should be false');
-})();
+    var diff = Math.abs(num1 - num2);
+    if (diff < epsilon) return true;
 
-(function shouldBeFalseWhenSmallArray() {
-    // arrange
-    var arrayTest = [0, 0];
+    return false;
+}
 
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(!result, 'should be false when small');
-})();
-
-(function shouldBeTrueWithThreeElements() {
-    // arrange
-    var arrayTest = [0, 0, 0];
-
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(result, 'should be true with all zeros');
-})();
-
-(function shouldBeTrueWithFourElements() {
-    // arrange
-    var arrayTest = [0, 0, 0, 1];
-
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(result, 'should be true with zeros');
-})();
-
-(function shouldBeTrueWithNegatives() {
-    // arrange
-    var arrayTest = [-1, 0, 0, 1];
-
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(result, 'should be true with negatives');
-})();
-
-(function shouldBeTrueWithDecimals() {
-    // arrange
-    var arrayTest = [-1.2, 0, 0, 1.2];
-
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(result, 'should be true with negative decimals');
-})();
-
-(function shouldBeTrueWithOutOfOrder() {
-    // arrange
-    var arrayTest = [2, 3, 4, 1, 5, -1.2, 0.2];
-
-    // act
-    var result = hasZeroSumNumber(arrayTest);
-
-    // assert
-    console.assert(result, 'should be true with out of order');
-})();
+module.exports = hasZeroSumNumber;

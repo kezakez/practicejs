@@ -79,7 +79,7 @@ describe("Zero Sum function", function() {
         done();
     });
 
-    it("benchmark", function() {
+    it("benchmarks", function() {
         // arrange
         var arrayTest = [];
         for(var i = 0; i < 100; i++) {
