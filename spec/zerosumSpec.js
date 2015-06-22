@@ -1,5 +1,7 @@
 describe("Zero Sum function", function() {
-    var hasZeroSumNumber = require('../zerosum/zerosum');
+    'use strict';
+
+    var hasZeroSumNumber = require('../zeroSum');
 
     it("should be false when not found", function() {
         // arrange
@@ -86,7 +88,7 @@ describe("Zero Sum function", function() {
             arrayTest.push(2, 3, 4, 1, 5, 1, 6, 7, 8);
         }
         arrayTest.push(1, 0, 0, 0, 1);
-        for(var i = 0; i < 100; i++) {
+        for(var j = 0; j < 100; j++) {
             arrayTest.push(2, 3, 4, 1, 5, 6, 7, 8, 1);
         }
 
